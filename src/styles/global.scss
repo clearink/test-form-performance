@@ -1,0 +1,16 @@
+@use '@mink-ui/core/dist/mink-ui.css';
+
+html,
+body,
+#root {
+  height: 100%;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--mink-color-fill) transparent;
+}
+
+.better-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--mink-color-fill) transparent;
+  scrollbar-gutter: stable;
+}
