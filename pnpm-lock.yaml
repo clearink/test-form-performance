@@ -24,8 +24,8 @@ importers:
         specifier: ^0.26.13
         version: 0.26.13(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mink-ui/core':
-        specifier: 0.0.9
-        version: 0.0.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 0.0.10
+        version: 0.0.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mink-ui/emator':
         specifier: ^0.0.6
         version: 0.0.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -679,8 +679,8 @@ packages:
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
-  '@mink-ui/core@0.0.9':
-    resolution: {integrity: sha512-rBZSswsYG4zPeYOSjRGdaAiQuGJo8doz0fSbxbVVJT+ymWDVYfSG6/6oyPqODplO/n8fROzKBIVIx+onNcRlww==}
+  '@mink-ui/core@0.0.10':
+    resolution: {integrity: sha512-f0gjYqckVtrE81c7nDlapsk7BxP0zUhWvsBeS34ULvIZ9eVlDPnN4WRI8Jbmtnr0vGAsOZY3w/Luie36OShTgQ==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -4210,7 +4210,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@mink-ui/core@0.0.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@mink-ui/core@0.0.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@mink-ui/icons': 0.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)

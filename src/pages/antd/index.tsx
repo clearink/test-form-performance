@@ -6,7 +6,7 @@ export default function Index() {
   const [form] = Form.useForm();
 
   return (
-    <div style={{ width: 500, margin: "40px auto" }}>
+    <div style={{ width: 600, margin: "40px auto" }}>
       <Space style={{ marginBottom: 12 }}>
         <Button onClick={() => setVisible(!visible)}>
           {visible ? "隐藏" : "显示"}
@@ -21,13 +21,6 @@ export default function Index() {
           }}
         >
           getValues
-        </Button>
-        <Button
-          onClick={() => {
-            form.resetFields();
-          }}
-        >
-          重置字段
         </Button>
       </Space>
       {visible && <FormDisplay form={form} />}

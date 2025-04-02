@@ -1,15 +1,19 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import HomeLayout from "./components/home-layout";
-import MinkUiForm from "./pages/mink-ui";
+import MinkForm from "./pages/mink-ui";
 import AntdForm from "./pages/antd";
+import MinkResetForm from "./pages/mink-ui-reset";
+import AntdResetForm from "./pages/antd-reset";
 
 export default function App() {
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<HomeLayout />}>
-          <Route path={"mink-ui"} element={<MinkUiForm />} />
+          <Route path={"mink-ui"} element={<MinkForm />} />
           <Route path={"antd"} element={<AntdForm />} />
+          <Route path={"mink-ui-reset"} element={<MinkResetForm />} />
+          <Route path={"antd-reset"} element={<AntdResetForm />} />
         </Route>
       </Routes>
     </HashRouter>

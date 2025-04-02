@@ -8,7 +8,7 @@ export default function Index() {
   const form = Form.useForm();
 
   return (
-    <div style={{ width: 500, margin: "40px auto" }}>
+    <div style={{ width: 600, margin: "40px auto" }}>
       <Space style={{ marginBottom: 12 }}>
         <Button onClick={() => setVisible(!visible)}>
           {visible ? "隐藏" : "显示"}
@@ -22,13 +22,6 @@ export default function Index() {
           }}
         >
           getValues
-        </Button>
-        <Button
-          onClick={() => {
-            form.resetFields();
-          }}
-        >
-          重置字段
         </Button>
       </Space>
       {visible && <FormDisplay form={form} />}
@@ -44,7 +37,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
   return (
     <Form form={form} preserve={false}>
       <Form.Item name="name" label="姓名" rule={nameRequired}>
-        <Input />
+        <Input style={{ width: 400 }} />
       </Form.Item>
       <Form.List
         name="list"
@@ -62,7 +55,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >
-                  <Input />
+                  <Input style={{ width: 400 }} />
                 </Form.Item>
                 <Form.Item
                   name={[field.name, "last"]}
@@ -70,7 +63,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >
-                  <Input />
+                  <Input style={{ width: 400 }} />
                 </Form.Item>
               </div>
             ))}

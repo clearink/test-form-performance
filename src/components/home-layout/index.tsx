@@ -19,6 +19,12 @@ export default function HomeLayout() {
             <NavLink className={styles["link-item"]} to="/antd">
               antd
             </NavLink>
+            <NavLink className={styles["link-item"]} to="/mink-ui-reset">
+              mink-ui-reset
+            </NavLink>
+            <NavLink className={styles["link-item"]} to="/antd-reset">
+              antd-reset
+            </NavLink>
           </div>
         </div>
       </div>
