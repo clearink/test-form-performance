@@ -14,3 +14,7 @@ body,
   scrollbar-color: var(--mink-color-fill) transparent;
   scrollbar-gutter: stable;
 }
+
+.mink-form-item__control{
+  flex: 1 1 0;
+}

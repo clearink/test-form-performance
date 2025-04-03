@@ -33,7 +33,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
   const { form } = props;
 
   return (
-    <Form form={form} preserve={false}>
+    <Form form={form}>
       <Form.Item
         name="name"
         label="姓名"
@@ -46,12 +46,28 @@ function FormDisplay(props: { form: FormInstance<any> }) {
       </Form.Item>
       <Form.List
         name="list"
-        initialValue={Array.from({ length: 1000 }).map((_, index) => {
+        initialValue={Array.from({ length: 1 }).map((_, index) => {
           return { first: "first name", last: "last name" };
         })}
       >
-        {(fields, { add, remove }) => (
+        {(fields, helpers) => (
           <>
+            <Space style={{ marginBottom: 12 }}>
+              <Button
+                onClick={() => {
+                  helpers.add();
+                }}
+              >
+                add
+              </Button>
+              <Button
+                onClick={() => {
+                  helpers.remove(0);
+                }}
+              >
+                remove first
+              </Button>
+            </Space>
             {fields.map((field, index) => (
               <div key={field.key}>
                 <Form.Item
@@ -75,6 +91,31 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   initialValue={"first name field"}
                 >
                   <SimpleInput />
+                </Form.Item>
+                <Form.Item shouldUpdate>
+                  {({ getFieldValue }) => {
+                    return getFieldValue(["list", field.name, "first"]) ===
+                      "123" ? (
+                      <Form.Item
+                        key="price"
+                        label={`price ${index + 1}`}
+                        name={[field.name, "price"]}
+                        preserve={false}
+                      >
+                        <SimpleInput placeholder="price" />
+                      </Form.Item>
+                    ) : (
+                      <Form.Item
+                        key="other"
+                        label={`other ${index + 1}`}
+                        name={[field.name, "other"]}
+                        initialValue="other"
+                        preserve={false}
+                      >
+                        <SimpleInput placeholder="other" />
+                      </Form.Item>
+                    );
+                  }}
                 </Form.Item>
               </div>
             ))}

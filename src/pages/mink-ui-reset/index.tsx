@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Button, Input, Space } from "antd";
+import { Button, Space } from "antd";
 import { Form, FormInstance } from "@mink-ui/core";
 import kv from "@mink-ui/emator";
+import SimpleInput from "../../components/simple-input";
 
 export default function Index() {
   const [visible, setVisible] = useState(true);
@@ -45,7 +46,7 @@ export default function Index() {
                   return (    
                     <Form form={form} preserve={false}>     
                       <Form.Item name="name" label="姓名" rule={nameRequired}>       
-                       <Input />      
+                       <SimpleInput />      
                       </Form.Item>      
                       <Form.List 
                         name="list"
@@ -69,7 +70,7 @@ export default function Index() {
                                   rule={nameRequired}                  
                                   initialValue={"first name field"}                
                                 >
-                                  <Input />
+                                  <SimpleInput />
                                 </Form.Item>
                                 <Form.Item
                                   name={[field.name, "last"]}
@@ -77,27 +78,29 @@ export default function Index() {
                                   rule={nameRequired}
                                   initialValue={"last name field"}
                                 >                  
-                                  <Input />
+                                  <SimpleInput />
                                 </Form.Item>
                                 <Form.Item shouldUpdate>                  
                                   {({ getFieldValue }) => { 
                                     return getFieldValue(["list", field.name, "first"]) === "123" 
                                     ? (
-                                      <Form.Item                        
+                                      <Form.Item
+                                        key="price"                        
                                         label={\`price \${index + 1}\`}
                                         name={[field.name, "price"]}
                                         preserve={false}
                                       >
-                                        <Input placeholder="price" />
+                                        <SimpleInput placeholder="price" />
                                       </Form.Item> 
                                     ) : (
                                       <Form.Item
+                                        key="other"
                                         label={\`other \${index + 1}\`}
                                         name={[field.name, "other"]}
                                         initialValue="other"                        
                                         preserve={false}                      
                                       >                        
-                                        <Input placeholder="other" />                      
+                                        <SimpleInput placeholder="other" />                      
                                       </Form.Item>                    
                                     );}}
                                 </Form.Item>              
@@ -124,7 +127,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
   return (
     <Form form={form} preserve={false}>
       <Form.Item name="name" label="姓名" rule={nameRequired}>
-        <Input />
+        <SimpleInput />
       </Form.Item>
       <Form.List
         name="list"
@@ -156,7 +159,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >
-                  <Input />
+                  <SimpleInput />
                 </Form.Item>
                 <Form.Item
                   name={[field.name, "last"]}
@@ -164,27 +167,29 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   rule={nameRequired}
                   initialValue={"last name field"}
                 >
-                  <Input />
+                  <SimpleInput />
                 </Form.Item>
                 <Form.Item shouldUpdate>
                   {({ getFieldValue }) => {
                     return getFieldValue(["list", field.name, "first"]) ===
                       "123" ? (
                       <Form.Item
+                        key="price"
                         label={`price ${index + 1}`}
                         name={[field.name, "price"]}
                         preserve={false}
                       >
-                        <Input placeholder="price" />
+                        <SimpleInput placeholder="price" />
                       </Form.Item>
                     ) : (
                       <Form.Item
+                        key="other"
                         label={`other ${index + 1}`}
                         name={[field.name, "other"]}
                         initialValue="other"
                         preserve={false}
                       >
-                        <Input placeholder="other" />
+                        <SimpleInput placeholder="other" />
                       </Form.Item>
                     );
                   }}

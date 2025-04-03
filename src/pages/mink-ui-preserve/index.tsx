@@ -4,7 +4,6 @@ import { Form, FormInstance } from "@mink-ui/core";
 import kv from "@mink-ui/emator";
 import SimpleInput from "../../components/simple-input";
 
-
 export default function Index() {
   const [visible, setVisible] = useState(true);
   const form = Form.useForm();
@@ -37,18 +36,35 @@ function FormDisplay(props: { form: FormInstance<any> }) {
   const nameRequired = kv.string().min(4).max(6).required("请输入姓名");
 
   return (
-    <Form form={form} preserve={false}>
+    <Form form={form}>
       <Form.Item name="name" label="姓名" rule={nameRequired}>
-        <SimpleInput />
+        <SimpleInput style={{ width: 400 }} />
       </Form.Item>
       <Form.List
         name="list"
-        initialValue={Array.from({ length: 1000 }).map((_, index) => {
+        initialValue={Array.from({ length: 1 }).map((_, index) => {
           return { first: "first name", last: "last name" };
         })}
       >
-        {(fields) => (
+        {(fields, helpers) => (
           <>
+            {" "}
+            <Space style={{ marginBottom: 12 }}>
+              <Button
+                onClick={() => {
+                  helpers.append();
+                }}
+              >
+                add
+              </Button>
+              <Button
+                onClick={() => {
+                  helpers.remove(0);
+                }}
+              >
+                remove first
+              </Button>
+            </Space>
             {fields.map((field, index) => (
               <div key={field.key}>
                 <Form.Item
@@ -66,6 +82,31 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   initialValue={"first name field"}
                 >
                   <SimpleInput />
+                </Form.Item>
+                <Form.Item shouldUpdate>
+                  {({ getFieldValue }) => {
+                    return getFieldValue(["list", field.name, "first"]) ===
+                      "123" ? (
+                      <Form.Item
+                        key="price"
+                        label={`price ${index + 1}`}
+                        name={[field.name, "price"]}
+                        preserve={false}
+                      >
+                        <SimpleInput placeholder="price" />
+                      </Form.Item>
+                    ) : (
+                      <Form.Item
+                        key="other"
+                        label={`other ${index + 1}`}
+                        name={[field.name, "other"]}
+                        initialValue="other"
+                        preserve={false}
+                      >
+                        <SimpleInput placeholder="other" />
+                      </Form.Item>
+                    );
+                  }}
                 </Form.Item>
               </div>
             ))}
