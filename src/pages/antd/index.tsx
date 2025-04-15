@@ -39,14 +39,14 @@ function FormDisplay(props: { form: FormInstance<any> }) {
         label="姓名"
         rules={[
           { required: true, message: "请输入姓名" },
-          { type: "string", min: 4, max: 6 },
+          { type: "string", min: 4 },
         ]}
       >
         <SimpleInput />
       </Form.Item>
       <Form.List
         name="list"
-        initialValue={Array.from({ length: 1000 }).map((_, index) => {
+        initialValue={Array.from({ length: 2000 }).map((_, index) => {
           return { first: "first name", last: "last name" };
         })}
       >
@@ -59,7 +59,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   label={`姓名 ${index + 1}`}
                   rules={[
                     { required: true, message: "请输入姓名" },
-                    { type: "string", min: 4, max: 6 },
+                    { type: "string", min: 4 },
                   ]}
                   initialValue={"first name field"}
                 >
@@ -70,7 +70,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   label={`姓名 ${index + 1}`}
                   rules={[
                     { required: true, message: "请输入姓名" },
-                    { type: "string", min: 4, max: 6 },
+                    { type: "string", min: 4 },
                   ]}
                   initialValue={"first name field"}
                 >

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Space } from "antd";
 import { Form, FormInstance } from "@mink-ui/core";
-import kv from "@mink-ui/emator";
 import SimpleInput from "../../components/simple-input";
 
 export default function Index() {
@@ -122,7 +121,31 @@ export default function Index() {
 function FormDisplay(props: { form: FormInstance<any> }) {
   const { form } = props;
 
-  const nameRequired = kv.string().min(3).max(10).required();
+  const nameRequired = {
+    validate: async (value: string | undefined) => {
+      if (!value || value == null) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username is required',
+            },
+          ]
+        })
+      }
+
+      if (value.length < 4) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username length must be greater than 4'
+            }
+          ]
+        })
+      }
+
+      return Promise.resolve(value)
+    }
+  }
 
   return (
     <Form form={form} preserve={false}>

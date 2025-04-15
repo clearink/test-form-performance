@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useOutlet } from "react-router-dom";
+import { NavLink,  useOutlet } from "react-router-dom";
 
 import styles from "./style.module.scss";
 
