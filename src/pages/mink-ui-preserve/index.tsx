@@ -69,7 +69,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
               <div key={field.key}>
                 <Form.Item
                   name={[field.name, "first"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} first`}
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >
@@ -77,7 +77,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                 </Form.Item>
                 <Form.Item
                   name={[field.name, "last"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} last`}
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >

@@ -10,6 +10,12 @@ export default function Index() {
   return (
     <div>
       <div style={{ width: 500, margin: "40px auto" }}>
+        <div>
+          <p>antd Form reset 会错误的重置字段值</p>
+          <p>操作步骤: </p>
+          <p>1. 点击 重置字段, 发现字段都成空了</p>
+          <p>2. 点击 getValues, 可以观察list为空值</p>
+        </div>
         <Space style={{ marginBottom: 12 }}>
           <Button onClick={() => setVisible(!visible)}>
             {visible ? "隐藏" : "显示"}

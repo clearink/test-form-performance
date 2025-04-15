@@ -8,6 +8,13 @@ export default function Index() {
 
   return (
     <div style={{ width: 600, margin: "40px auto" }}>
+      <div>
+        <p>antd Form preserve 功能无法维持字段值</p>
+        <p>操作步骤: </p>
+        <p>1. 在 姓名 1 first 输入 123 将 price 1 展示出来</p>
+        <p>2. 在 price 1 中输入值</p>
+        <p>3. 点击隐藏, 点击显示按钮, 可以观察到输入的 price 1 字段值消失</p>
+      </div>
       <Space style={{ marginBottom: 12 }}>
         <Button onClick={() => setVisible(!visible)}>
           {visible ? "隐藏" : "显示"}
@@ -72,7 +79,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
               <div key={field.key}>
                 <Form.Item
                   name={[field.name, "first"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} first`}
                   rules={[
                     { required: true, message: "请输入姓名" },
                     { type: "string", min: 4, max: 6 },
@@ -83,7 +90,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                 </Form.Item>
                 <Form.Item
                   name={[field.name, "last"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} last`}
                   rules={[
                     { required: true, message: "请输入姓名" },
                     { type: "string", min: 4, max: 6 },

@@ -15,7 +15,7 @@
     "@element-plus/icons-svg": "^2.3.1",
     "@element-plus/icons-vue": "^2.3.1",
     "@floating-ui/react": "^0.26.13",
-    "@mink-ui/core": "0.0.11",
+    "@mink-ui/core": "0.0.14",
     "@mink-ui/emator": "^0.0.6",
     "@nextui-org/button": "^2.0.34",
     "@nextui-org/react": "^2.4.2",
