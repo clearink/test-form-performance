@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Space } from "antd";
-import { Form, FormInstance } from "@mink-ui/core";
-import kv from "@mink-ui/emator";
+import { Form, FormInstance, } from "@mink-ui/core";
 import SimpleInput from "../../components/simple-input";
 
 export default function Index() {
@@ -33,7 +32,31 @@ export default function Index() {
 function FormDisplay(props: { form: FormInstance<any> }) {
   const { form } = props;
 
-  const nameRequired = kv.string().min(4).max(6).required("请输入姓名");
+  const nameRequired = {
+    validate: async (value: string | undefined) => {
+      if (!value || value == null) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username is required',
+            },
+          ]
+        })
+      }
+
+      if (value.length < 4) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username length must be greater than 4'
+            }
+          ]
+        })
+      }
+
+      return Promise.resolve(value)
+    }
+  }
 
   return (
     <Form form={form}>
@@ -48,7 +71,6 @@ function FormDisplay(props: { form: FormInstance<any> }) {
       >
         {(fields, helpers) => (
           <>
-            {" "}
             <Space style={{ marginBottom: 12 }}>
               <Button
                 onClick={() => {
@@ -69,7 +91,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
               <div key={field.key}>
                 <Form.Item
                   name={[field.name, "first"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} first`}
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >
@@ -77,7 +99,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                 </Form.Item>
                 <Form.Item
                   name={[field.name, "last"]}
-                  label={`姓名 ${index + 1}`}
+                  label={`姓名 ${index + 1} last`}
                   rule={nameRequired}
                   initialValue={"first name field"}
                 >

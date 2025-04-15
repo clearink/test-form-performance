@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Space } from "antd";
 import { Form, FormInstance } from "@mink-ui/core";
-import kv from "@mink-ui/emator";
+
 import SimpleInput from "../../components/simple-input";
 
 
@@ -10,7 +10,7 @@ export default function Index() {
   const form = Form.useForm();
 
   return (
-    <div style={{ width: 600, margin: "40px auto" }}>
+    <div style={{ width: 340, margin: "40px auto" }}>
       <Space style={{ marginBottom: 12 }}>
         <Button onClick={() => setVisible(!visible)}>
           {visible ? "隐藏" : "显示"}
@@ -34,7 +34,31 @@ export default function Index() {
 function FormDisplay(props: { form: FormInstance<any> }) {
   const { form } = props;
 
-  const nameRequired = kv.string().min(4).max(6).required("请输入姓名");
+  const nameRequired = {
+    validate: async (value: string | undefined) => {
+      if (!value || value == null) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username is required',
+            },
+          ]
+        })
+      }
+
+      if (value.length < 4) {
+        return Promise.reject({
+          issues: [
+            {
+              message: 'username length must be greater than 4'
+            }
+          ]
+        })
+      }
+
+      return Promise.resolve(value)
+    }
+  }
 
   return (
     <Form form={form} preserve={false}>

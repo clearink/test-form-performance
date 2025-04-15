@@ -7,7 +7,7 @@ export default function Index() {
   const [form] = Form.useForm();
 
   return (
-    <div style={{ width: 600, margin: "40px auto" }}>
+    <div style={{ width: 340, margin: "40px auto" }}>
       <Space style={{ marginBottom: 12 }}>
         <Button onClick={() => setVisible(!visible)}>
           {visible ? "隐藏" : "显示"}
@@ -39,7 +39,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
         label="姓名"
         rules={[
           { required: true, message: "请输入姓名" },
-          { type: "string", min: 4, max: 6 },
+          { type: "string", min: 4 },
         ]}
       >
         <SimpleInput />
@@ -59,7 +59,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   label={`姓名 ${index + 1}`}
                   rules={[
                     { required: true, message: "请输入姓名" },
-                    { type: "string", min: 4, max: 6 },
+                    { type: "string", min: 4 },
                   ]}
                   initialValue={"first name field"}
                 >
@@ -70,7 +70,7 @@ function FormDisplay(props: { form: FormInstance<any> }) {
                   label={`姓名 ${index + 1}`}
                   rules={[
                     { required: true, message: "请输入姓名" },
-                    { type: "string", min: 4, max: 6 },
+                    { type: "string", min: 4 },
                   ]}
                   initialValue={"first name field"}
                 >
